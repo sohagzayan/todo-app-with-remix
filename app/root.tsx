@@ -7,8 +7,8 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import stylesheet from "./tailwind.css";
 
+import stylesheet from "./tailwind.css";
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
   title: "New Remix App",
@@ -32,4 +32,10 @@ export default function App() {
   );
 }
 
-export const links = () => [{ rel: "stylesheet", href: stylesheet }];
+export const links = () => [
+  { rel: "stylesheet", href: stylesheet },
+  {
+    rel: "stylesheet",
+    href: "https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css",
+  },
+];
