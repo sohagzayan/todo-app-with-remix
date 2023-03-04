@@ -4,7 +4,7 @@
   "scripts": {
     "build": "remix build",
     "dev": "remix dev",
-    "start": "remix run",
+    "start": "remix-serve build",
     "typecheck": "tsc"
   },
   "dependencies": {
