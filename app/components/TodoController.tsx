@@ -1,11 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
 
-// interface FilterType {
-//   value: string;
-//   label: string;
-// }
-
 export default function TodoController() {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filter, setFilter] = useState<string>("all");

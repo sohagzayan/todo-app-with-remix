@@ -14,7 +14,7 @@ export default function Todos({ allTodo, setAllTodo }: any) {
       <div>
         {allTodo &&
           allTodo?.map((data: TodoType, index: number) => (
-            <SingleTodo key={index} data={data} />
+            <SingleTodo key={index} data={data} setAllTodo={setAllTodo} />
           ))}
       </div>
     </div>
