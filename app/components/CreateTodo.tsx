@@ -11,16 +11,12 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
   const alert = useAlert();
   const modalRef = useRef(null);
   const [showDate, setShowDate] = useState<boolean>(false);
+  const [date, setDate] = useState<string>("");
   const [selected, setSelected] = useState<Date>();
-  let footer = <p>Please pick a day.</p>;
-  if (selected) {
-    footer = <p>You picked {format(selected, "PP")}.</p>;
-  }
 
   const validationSchema = Yup.object().shape({
     title: Yup.string()
       .required("Todo text is required")
-      .min(5, "Todo Text must be at least 5 characters")
       .max(60, "Todo Text Maximum you  can add 60 characters"),
   });
 
@@ -29,20 +25,15 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
   };
 
   const addTodoHandler = (values: { title: string }) => {
-    if (!selected) {
-      alert.error("Date  is required. please add a date");
-    } else {
-      const existingTodosForId = JSON.parse(
-        localStorage.getItem("todo") || "[]"
-      );
-      addNewTodo({
-        id: existingTodosForId.length + 1,
-        status: "progress",
-        date: selected,
-        title: values.title,
-      });
-      initialValues.title = "";
-    }
+    const existingTodosForId = JSON.parse(localStorage.getItem("todo") || "[]");
+    addNewTodo({
+      id: existingTodosForId.length + 1,
+      status: "progress",
+      date: date,
+      title: values.title,
+    });
+    initialValues.title = "";
+    console.log("end of day");
   };
 
   const addNewTodo = (newTodo: any) => {
@@ -93,6 +84,7 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
                         placeholder="Add new"
                         className="w-full outline-none border-none"
                         name="title"
+                        required
                       />
                       <span className="text-[#FE2D55] absolute -bottom-[26px] left-2">
                         <ErrorMessage name="title" />
@@ -100,36 +92,13 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
                     </div>
                     <div className="flex items-center">
                       <span className="relative mr-2">
-                        {" "}
-                        {/* <i
-                          
-                          className="ri-calendar-2-line cursor-pointer text-[22px] text-[#006BED]"
-                        ></i> */}
-                        <img
-                          title="Add Date "
-                          onClick={() => setShowDate((prev) => !prev)}
-                          width={60}
-                          height={60}
-                          className="cursor-pointer"
-                          src={TimeImage}
-                          alt=""
+                        <input
+                          type="date"
+                          value={date}
+                          onChange={(e) => setDate(e.target.value)}
+                          required
+                          className="outline-[#006BED] text-[#777]"
                         />
-                        <div
-                          ref={modalRef}
-                          className={
-                            showDate
-                              ? "absolute w-[250px] top-[40px]  right-0 p-3  bg-white shadow-lg  transform translate-y-[0px] opacity-1  pointer-events-auto transition-all delay-200 ease-in z-50 visible border border-[#777] border-opacity-25"
-                              : "absolute w-[250px] top-[25px]  right-0 p-3  bg-white shadow-lg pointer-events-auto  transform translate-y-[30px] opacity-0  transition-all delay-200 ease-out z-50 invisible"
-                          }
-                        >
-                          <DayPicker
-                            className=""
-                            mode="single"
-                            selected={selected}
-                            onSelect={setSelected}
-                            footer={footer}
-                          />
-                        </div>
                       </span>
                       <button
                         type="submit"

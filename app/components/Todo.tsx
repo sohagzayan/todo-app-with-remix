@@ -5,6 +5,8 @@ import Todos from "./Todos";
 
 export default function Todo() {
   const [allTodo, setAllTodo] = useState([]);
+  const [filter, setFilter] = useState<string>("all");
+  const [sort, setSort] = useState<string>("");
 
   useEffect(() => {
     const existingTodos = JSON.parse(localStorage.getItem("todo") || "[]");
@@ -23,10 +25,14 @@ export default function Todo() {
           <CreateTodo allTodo={allTodo} setAllTodo={setAllTodo} />
         </div>
         <div>
-          <TodoController />
+          <TodoController
+            {...{ filter, setFilter, sort, setSort, allTodo, setAllTodo }}
+          />
         </div>
         <div>
-          <Todos allTodo={allTodo} setAllTodo={setAllTodo} />
+          <Todos
+            {...{ filter, setFilter, sort, setSort, allTodo, setAllTodo }}
+          />
         </div>
       </div>
     </Fragment>

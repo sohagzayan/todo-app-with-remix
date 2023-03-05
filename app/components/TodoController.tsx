@@ -1,10 +1,51 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { TodoType } from "./Todos";
 
-export default function TodoController() {
-  const [showFilter, setShowFilter] = useState<boolean>(false);
-  const [filter, setFilter] = useState<string>("all");
-  const [sort, setSort] = useState<string>("");
+export default function TodoController({
+  filter,
+  setFilter,
+  sort,
+  setSort,
+  allTodo,
+  setAllTodo,
+}: any) {
+  const handleFiltering = (e: any) => {
+    // setFilter(e.target.value);
+    const existingTodos = JSON.parse(localStorage.getItem("todo") || "[]");
+    if (e.target.value === "completed") {
+      const todo = existingTodos.filter(
+        (t: TodoType) => t.status === "completed"
+      );
+      setAllTodo(todo);
+    } else if (e.target.value === "progress") {
+      const todo = existingTodos.filter(
+        (t: TodoType) => t.status === "progress"
+      );
+      setAllTodo(todo);
+    } else {
+      setAllTodo(existingTodos);
+    }
+  };
+
+  const handleSort = (e: any) => {
+    const existingTodos = JSON.parse(localStorage.getItem("todo") || "[]");
+    if (e.target.value === "-1") {
+      const sorted = existingTodos.sort((a: any, b: any) => {
+        //@ts-ignore
+        return new Date(a.date) - new Date(b.date);
+      });
+      setAllTodo(sorted);
+    } else if (e.target.value === "1") {
+      const sorted = existingTodos.sort((a: any, b: any) => {
+        //@ts-ignore
+        return new Date(b.date) - new Date(a.date);
+      });
+      setAllTodo(sorted);
+    } else {
+      setAllTodo(existingTodos);
+    }
+  };
 
   return (
     <div className="flex justify-end mt-5">
@@ -16,7 +57,7 @@ export default function TodoController() {
               className="w-[100px] md:w-[150px] p-1 rounded border border-[#BDBDBD] outline-[#006BED]"
               name="filter"
               id=""
-              onChange={(e) => setFilter(e.target.value)}
+              onChange={handleFiltering}
             >
               <option value="all">All Todo</option>
               <option value="completed">Completed</option>
@@ -31,7 +72,7 @@ export default function TodoController() {
               className=" w-[100px] md:w-[150px] p-1 rounded border border-[#BDBDBD] outline-[#006BED]"
               name="filter"
               id=""
-              onChange={(e) => setSort(e.target.value)}
+              onChange={handleSort}
             >
               <option value="default">Default</option>
               <option value="-1">Newest</option>
