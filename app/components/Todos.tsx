@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SingleTodo from "./SingleTodo";
 
 export interface TodoType {
@@ -8,34 +8,14 @@ export interface TodoType {
   date: string;
 }
 
-export default function Todos() {
-  const todosData = [
-    {
-      id: 1,
-      title: "Renew car insurance",
-      status: "progress",
-      date: "2022-03-06",
-    },
-    {
-      id: 2,
-      title:
-        "Renew car insurance Renew car insurance Renew car insurance Renew car insurance Renew car insurance Renew car insurance Renew car insurance Renew car insurance",
-      status: "progress",
-      date: "2022-03-06",
-    },
-    {
-      id: 3,
-      title: "Renew car insurance",
-      status: "progress",
-      date: "2022-03-06",
-    },
-  ];
+export default function Todos({ allTodo, setAllTodo }: any) {
   return (
     <div className="mt-6">
       <div>
-        {todosData.map((data) => (
-          <SingleTodo key={data.id} data={data} />
-        ))}
+        {allTodo &&
+          allTodo?.map((data: TodoType, index: number) => (
+            <SingleTodo key={index} data={data} />
+          ))}
       </div>
     </div>
   );

@@ -7,6 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+// import "react-toastify/dist/ReactToastify.css";
 
 import stylesheet from "./tailwind.css";
 export const meta: MetaFunction = () => ({

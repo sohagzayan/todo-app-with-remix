@@ -9,39 +9,40 @@ import Select from "react-select";
 export default function TodoController() {
   const [showFilter, setShowFilter] = useState<boolean>(false);
   const [filter, setFilter] = useState<string>("all");
-  const [selectedFilter, setSelectedFilter] = useState<any>(null);
-  const [selectedSort, setSelectedSort] = useState<any>(null);
-
-  const optionsFilter = [
-    { value: "all todo", label: "All Todo" },
-    { value: "completed", label: "Completed" },
-    { value: "progress", label: "Progress" },
-  ];
-
-  const optionsSort = [
-    { value: "default", label: "Default" },
-    { value: "-1", label: "Newest" },
-    { value: "1", label: "Oldest" },
-  ];
+  const [sort, setSort] = useState<string>("");
 
   return (
     <div className="flex justify-end mt-5">
       <div className="flex items-center">
         <div className="flex mr-5  items-center text-[#4F4F4F] text-[14px]">
           <h4 className="mr-3">Filter</h4>
-          <Select
-            value={selectedFilter}
-            onChange={setSelectedFilter}
-            options={optionsFilter}
-          />
+          <div>
+            <select
+              className="w-[100px] md:w-[150px] p-1 rounded border border-[#BDBDBD] outline-[#006BED]"
+              name="filter"
+              id=""
+              onChange={(e) => setFilter(e.target.value)}
+            >
+              <option value="all">All Todo</option>
+              <option value="completed">Completed</option>
+              <option value="progress">Progress</option>
+            </select>
+          </div>
         </div>
         <div className="flex  items-center text-[#4F4F4F] text-[14px]">
           <h4 className="mr-3">Sort</h4>
-          <Select
-            value={selectedSort}
-            onChange={setSelectedSort}
-            options={optionsSort}
-          />
+          <div>
+            <select
+              className=" w-[100px] md:w-[150px] p-1 rounded border border-[#BDBDBD] outline-[#006BED]"
+              name="filter"
+              id=""
+              onChange={(e) => setSort(e.target.value)}
+            >
+              <option value="default">Default</option>
+              <option value="-1">Newest</option>
+              <option value="1">Oldest</option>
+            </select>
+          </div>
           <span>
             <i className="ri-sort-desc text-[22px] text-[#186bed] ml-1"></i>
           </span>

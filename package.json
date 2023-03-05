@@ -12,12 +12,18 @@
     "@remix-run/react": "^1.14.0",
     "@remix-run/serve": "^1.14.0",
     "date-fns": "^2.29.3",
+    "formik": "^2.2.9",
     "isbot": "^3.6.5",
     "react": "^18.2.0",
+    "react-alert": "^7.0.3",
+    "react-alert-template-basic": "^1.0.2",
     "react-day-picker": "^8.6.0",
     "react-dom": "^18.2.0",
     "react-select": "^5.7.0",
-    "remixicon": "^2.5.0"
+    "react-toastify": "^9.1.1",
+    "remixicon": "^2.5.0",
+    "yap": "^0.0.2",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@remix-run/dev": "^1.14.0",

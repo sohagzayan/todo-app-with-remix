@@ -5,8 +5,8 @@ export default function SingleTodo(props: { data: TodoType }) {
   const { id, title, status, date } = props.data;
   return (
     <div className="mb-5">
-      <div className="flex items-center justify-between">
-        <div className="flex max-w-[80%] items-center">
+      <div className=" md:flex items-center justify-between ">
+        <div className="flex w-[100%] md:max-w-[80%] items-center">
           <input
             id="title"
             type="checkbox"
