@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import SingleTodo from "./SingleTodo";
+import NotFoundImage from "../../public/assets/notfound.gif";
 
 export interface TodoType {
   id: number;
@@ -16,42 +17,26 @@ export default function Todos({
   allTodo,
   setAllTodo,
 }: any) {
-  const [todo, setTodo] = useState([]);
-  console.log("filter", todo);
-
-  // useEffect(() => {
-  //   // for Filter todo
-  //   if (filter === "completed") {
-  //     const todo = allTodo.filter((t: TodoType) => t.status === "completed");
-  //     setTodo(todo);
-  //   } else if (filter === "progress") {
-  //     const todo = allTodo.filter((t: TodoType) => t.status === "progress");
-  //     setTodo(todo);
-  //   } else {
-  //     setTodo(allTodo);
-  //   }
-  // }, [allTodo, filter]);
-
-  // useEffect(() => {
-  //   // for sort todo
-  // if (sort === "-1") {
-  //   const sorted = todo.sort((a: any, b: any) => a.date - b.date);
-  //   setTodo(sorted);
-  // } else if (sort === "1") {
-  //   const sorted = todo.sort((a: any, b: any) => b.date - a.date);
-  //   setTodo(sorted);
-  // } else {
-  //   setTodo(allTodo);
-  // }
-  // }, [allTodo, sort, todo]);
-
   return (
-    <div className="mt-6">
+    <div className="mt-10">
       <div>
-        {allTodo &&
+        {allTodo.length ? (
+          allTodo &&
           allTodo?.map((data: TodoType, index: number) => (
             <SingleTodo key={index} data={data} setAllTodo={setAllTodo} />
-          ))}
+          ))
+        ) : (
+          <div className="flex flex-col justify-center items-center pt-8">
+            <img
+              width={200}
+              height={200}
+              src={NotFoundImage}
+              className="rounded-full"
+              alt="not found images"
+            />
+            <h2 className="mt-2 text-[22px]">Don't Create Yet Any Todo </h2>
+          </div>
+        )}
       </div>
     </div>
   );

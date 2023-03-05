@@ -78,8 +78,8 @@ export default function SingleTodo(props: {
   };
 
   return (
-    <div className="mb-5">
-      <div className=" md:flex items-center justify-between ">
+    <div className="mb-5 border-b pb-3">
+      <div className=" md:flex items-center  justify-between ">
         <div className="flex w-[100%] md:max-w-[80%] items-center">
           <input
             id={id.toString()}
@@ -124,12 +124,12 @@ export default function SingleTodo(props: {
                   setUpdateValue(title);
                 }}
               >
-                <i className="ri-pencil-line text-[20px] cursor-pointer text-[#1EC1EB] mr-3"></i>
+                <i className="ri-pencil-line text-[25px] cursor-pointer text-[#1EC1EB] mr-6"></i>
               </span>
             )}
 
             <span onClick={() => handleDeleteTodo(id)}>
-              <i className="ri-delete-bin-line cursor-pointer text-[20px] text-[#FE2D55]"></i>
+              <i className="ri-delete-bin-line cursor-pointer text-[25px] text-[#FE2D55]"></i>
             </span>
           </div>
           <div className="flex items-center text-[13px] ">

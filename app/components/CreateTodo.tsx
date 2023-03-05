@@ -81,7 +81,7 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
                       <Field
                         onFocus={() => setShowDate(false)}
                         type="text"
-                        placeholder="Add new"
+                        placeholder="Add New Todo"
                         className="w-full outline-none border-none"
                         name="title"
                         required
