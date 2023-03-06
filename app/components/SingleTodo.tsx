@@ -102,7 +102,11 @@ export default function SingleTodo(props: {
           ) : (
             <label
               htmlFor={id.toString()}
-              className="text-[18px] text-[#4F4F4F]  "
+              className={
+                status === "completed"
+                  ? "text-[18px] text-[#4F4F4F] line-through "
+                  : "text-[18px] text-[#4F4F4F]  "
+              }
             >
               {title}
             </label>

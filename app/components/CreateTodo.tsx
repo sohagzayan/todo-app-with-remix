@@ -33,7 +33,6 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
       title: values.title,
     });
     initialValues.title = "";
-    console.log("end of day");
   };
 
   const addNewTodo = (newTodo: any) => {
@@ -110,13 +109,13 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
                   </div>
                   <div
                     className={
-                      selected
+                      date
                         ? "absolute -top-[30px] left-0 transform scale-100 transition-all delay-200 ease-in"
                         : "absolute -top-[30px] left-0 transform scale-0 transition-all delay-200 ease-out"
                     }
                   >
                     <span className="bg-[#006BED] text-[#fff] px-4 py-1 rounded">
-                      {selected && format(selected, "PP")}
+                      {date && date}
                     </span>
                   </div>
                 </Form>
