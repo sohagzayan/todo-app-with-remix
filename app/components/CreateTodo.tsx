@@ -75,13 +75,13 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
                   // onSubmit={addTodoHandler}
                   className="w-full rounded bg-[#fff] px-4 py-4 shadow-lg shadow-[ rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;] relative"
                 >
-                  <div className="flex items-center justify-between ">
+                  <div className=" md:flex items-center justify-between ">
                     <div className="w-full ">
                       <Field
                         onFocus={() => setShowDate(false)}
                         type="text"
                         placeholder="Add New Todo"
-                        className="w-full outline-none border-none"
+                        className="w-full outline-none "
                         name="title"
                         required
                       />
@@ -89,7 +89,7 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
                         <ErrorMessage name="title" />
                       </span>
                     </div>
-                    <div className="flex items-center">
+                    <div className="flex items-center md:mt-0 mt-5 md:border-t-0 border-t md:pt-0 pt-2">
                       <span className="relative mr-2">
                         <input
                           type="date"
