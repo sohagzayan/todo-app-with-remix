@@ -11,7 +11,9 @@ export default function CreateTodo({ allTodo, setAllTodo }: any) {
   const alert = useAlert();
   const modalRef = useRef(null);
   const [showDate, setShowDate] = useState<boolean>(false);
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState<string>(
+    new Date().toISOString().substr(0, 10)
+  );
   const [selected, setSelected] = useState<Date>();
 
   const validationSchema = Yup.object().shape({
